@@ -83,7 +83,6 @@ export default function ProductCard({ product }) {
             cursor: 'pointer',
             transition: 'var(--transition-smooth)'
           }}
-          onMouseEnter={(e) => e.target.style.backgroundColor = 'var(--color-primary)'}
           onMouseEnter={(e) => {
             e.target.style.backgroundColor = 'var(--color-primary)';
             e.target.style.color = 'white';
