@@ -16,7 +16,7 @@ export default function Home() {
   };
 
   return (
-    <div className="fade-in">
+    <div className="fade-in" style={{ overflowX: 'hidden' }}>
       {/* Hero Section */}
       <section style={{ 
         height: '100vh', 
@@ -25,15 +25,31 @@ export default function Home() {
         justifyContent: 'center', 
         alignItems: 'center',
         textAlign: 'center',
+        padding: '0 20px',
         background: 'linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("https://images.prodia.xyz/8f4b005c-76e3-4fec-86be-7301c8098c8c.png")',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         color: 'white'
       }}>
-        <h1 style={{ fontSize: '5rem', color: 'white', marginBottom: '1rem', fontWeight: '300' }}>
+        <h1 style={{ 
+          fontSize: 'clamp(2.5rem, 10vw, 5rem)', 
+          color: 'white', 
+          marginBottom: '1rem', 
+          fontWeight: '300',
+          width: '100%',
+          maxWidth: '90vw'
+        }}>
           {BRAND.name}
         </h1>
-        <p style={{ fontSize: '1rem', letterSpacing: '0.5em', textTransform: 'uppercase', marginBottom: '3rem', opacity: 0.8 }}>
+        <p style={{ 
+          fontSize: 'clamp(0.7rem, 2vw, 1rem)', 
+          letterSpacing: 'clamp(0.2em, 5vw, 0.5em)', 
+          textTransform: 'uppercase', 
+          marginBottom: '3rem', 
+          opacity: 0.8,
+          width: '100%',
+          maxWidth: '90vw'
+        }}>
           {BRAND.tagline}
         </p>
         <button style={{
@@ -44,7 +60,8 @@ export default function Home() {
           letterSpacing: '0.3em',
           backgroundColor: 'transparent',
           fontSize: '0.7rem',
-          cursor: 'pointer'
+          cursor: 'pointer',
+          maxWidth: '100%'
         }}>
           Explore Collection
         </button>
@@ -53,11 +70,11 @@ export default function Home() {
       {/* Signature Section */}
       <section className="container section-padding">
         <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-          <h2 style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>The Signature Piece</h2>
+          <h2 style={{ fontSize: 'clamp(1.8rem, 5vw, 2.5rem)', marginBottom: '0.5rem' }}>The Signature Piece</h2>
           <div style={{ width: '40px', height: '1px', backgroundColor: 'var(--color-secondary)', margin: '0 auto' }}></div>
         </div>
 
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <div style={{ display: 'flex', justifyContent: 'center', padding: '0 10px' }}>
           <div style={{ width: '100%', maxWidth: '500px' }}>
             <ProductCard product={signatureRing} />
           </div>
