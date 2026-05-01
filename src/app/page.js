@@ -1,5 +1,6 @@
 import { BRAND } from "@/config/constants";
 import ProductCard from "@/components/products/ProductCard";
+import Link from "next/link";
 
 export default function Home() {
   // Mock data for our signature piece
@@ -52,19 +53,21 @@ export default function Home() {
         }}>
           {BRAND.tagline}
         </p>
-        <button style={{
-          padding: '1.2rem 4rem',
-          border: '1px solid white',
-          color: 'white',
-          textTransform: 'uppercase',
-          letterSpacing: '0.3em',
-          backgroundColor: 'transparent',
-          fontSize: '0.7rem',
-          cursor: 'pointer',
-          maxWidth: '100%'
-        }}>
-          Explore Collection
-        </button>
+        <Link href="/collection">
+          <button style={{
+            padding: '1.2rem 4rem',
+            border: '1px solid white',
+            color: 'white',
+            textTransform: 'uppercase',
+            letterSpacing: '0.3em',
+            backgroundColor: 'transparent',
+            fontSize: '0.7rem',
+            cursor: 'pointer',
+            maxWidth: '100%'
+          }}>
+            Explore Collection
+          </button>
+        </Link>
       </section>
 
       {/* Signature Section */}
