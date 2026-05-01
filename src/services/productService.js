@@ -55,7 +55,7 @@ export const productService = {
 
     if (error) throw error;
     return data;
-  }
+  },
   /**
    * Create a new product with images
    */
