@@ -1,66 +1,75 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import { BRAND } from "@/config/constants";
+import ProductCard from "@/components/products/ProductCard";
 
 export default function Home() {
+  // Mock data for our signature piece
+  const signatureRing = {
+    id: 'ring-001',
+    name: 'Eternal Diamond Ring',
+    price: 125000,
+    is_exclusive: true,
+    images: [
+      '/products/ring-1.png',
+      '/products/ring-2.png',
+      '/products/ring-3.png'
+    ]
+  };
+
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.js file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className="fade-in">
+      {/* Hero Section */}
+      <section style={{ 
+        height: '100vh', 
+        display: 'flex', 
+        flexDirection: 'column', 
+        justifyContent: 'center', 
+        alignItems: 'center',
+        textAlign: 'center',
+        background: 'linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("https://images.prodia.xyz/8f4b005c-76e3-4fec-86be-7301c8098c8c.png")',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        color: 'white'
+      }}>
+        <h1 style={{ fontSize: '5rem', color: 'white', marginBottom: '1rem', fontWeight: '300' }}>
+          {BRAND.name}
+        </h1>
+        <p style={{ fontSize: '1rem', letterSpacing: '0.5em', textTransform: 'uppercase', marginBottom: '3rem', opacity: 0.8 }}>
+          {BRAND.tagline}
+        </p>
+        <button style={{
+          padding: '1.2rem 4rem',
+          border: '1px solid white',
+          color: 'white',
+          textTransform: 'uppercase',
+          letterSpacing: '0.3em',
+          backgroundColor: 'transparent',
+          fontSize: '0.7rem',
+          cursor: 'pointer'
+        }}>
+          Explore Collection
+        </button>
+      </section>
+
+      {/* Signature Section */}
+      <section className="container section-padding">
+        <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+          <h2 style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>The Signature Piece</h2>
+          <div style={{ width: '40px', height: '1px', backgroundColor: 'var(--color-secondary)', margin: '0 auto' }}></div>
         </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <div style={{ width: '100%', maxWidth: '500px' }}>
+            <ProductCard product={signatureRing} />
+          </div>
         </div>
-      </main>
+      </section>
+
+      {/* Footer Placeholder */}
+      <footer style={{ padding: '4rem 0', backgroundColor: 'var(--color-bg-alt)', textAlign: 'center' }}>
+        <p style={{ fontSize: '0.8rem', letterSpacing: '0.1em', color: 'var(--color-text-muted)' }}>
+          © 2026 {BRAND.name} LUXURY. ALL RIGHTS RESERVED.
+        </p>
+      </footer>
     </div>
   );
 }

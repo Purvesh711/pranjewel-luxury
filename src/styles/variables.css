@@ -1,0 +1,32 @@
+:root {
+  /* Brand Colors */
+  --color-primary: #1A1A1A;    /* Cinematic Black */
+  --color-secondary: #C5A059;  /* Luxury Gold */
+  --color-accent: #E5C387;     /* Light Shimmer Gold */
+  
+  /* Neutral Palette */
+  --color-bg: #FFFFFF;
+  --color-bg-alt: #F9F9F9;
+  --color-text: #333333;
+  --color-text-muted: #666666;
+  --color-border: #EEEEEE;
+
+  /* Typography */
+  --font-serif: 'Cormorant Garamond', serif;
+  --font-sans: 'Inter', sans-serif;
+
+  /* Spacing (Luxury spacing is generous) */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 4rem;
+  --space-xl: 8rem;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+  --shadow-md: 0 10px 20px rgba(0,0,0,0.08);
+
+  /* Transitions */
+  --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-magic: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}

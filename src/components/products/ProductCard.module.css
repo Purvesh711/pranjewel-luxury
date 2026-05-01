@@ -1,0 +1,67 @@
+.card {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  background-color: var(--color-bg-alt);
+  overflow: hidden;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+}
+
+.imageContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.5s ease-in-out, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 0;
+}
+
+.image.active {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.info {
+  padding: var(--space-sm) 0;
+  text-align: center;
+}
+
+.name {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  margin-bottom: 0.2rem;
+  color: var(--color-primary);
+}
+
+.price {
+  font-size: 0.9rem;
+  color: var(--color-secondary);
+  letter-spacing: 0.1em;
+}
+
+.exclusiveBadge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-color: var(--color-secondary);
+  color: white;
+  padding: 0.3rem 0.8rem;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  z-index: 10;
+}
