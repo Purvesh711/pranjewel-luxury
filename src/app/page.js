@@ -1,20 +1,34 @@
+'use client';
+
+import { useEffect, useState } from 'react';
 import { BRAND } from "@/config/constants";
 import ProductCard from "@/components/products/ProductCard";
 import Link from "next/link";
+import { productService } from "@/services/productService";
 
 export default function Home() {
-  // Mock data for our signature piece
-  const signatureRing = {
-    id: 'ring-001',
-    name: 'Eternal Diamond Ring',
-    price: 125000,
-    is_exclusive: true,
-    images: [
-      '/products/ring-1.png',
-      '/products/ring-2.png',
-      '/products/ring-3.png'
-    ]
-  };
+  const [signatureRing, setSignatureRing] = useState(null);
+
+  useEffect(() => {
+    async function loadFeatured() {
+      try {
+        const data = await productService.getAllProducts();
+        const exclusive = data.find(p => p.is_exclusive) || data[0];
+        
+        if (exclusive) {
+          setSignatureRing({
+            ...exclusive,
+            images: exclusive.product_images
+              .sort((a, b) => a.display_order - b.display_order)
+              .map(img => img.image_url)
+          });
+        }
+      } catch (error) {
+        console.error("Error loading featured piece:", error);
+      }
+    }
+    loadFeatured();
+  }, []);
 
   return (
     <div className="fade-in" style={{ overflowX: 'hidden' }}>
@@ -79,7 +93,7 @@ export default function Home() {
 
         <div style={{ display: 'flex', justifyContent: 'center', padding: '0 10px' }}>
           <div style={{ width: '100%', maxWidth: '500px' }}>
-            <ProductCard product={signatureRing} />
+            {signatureRing && <ProductCard product={signatureRing} />}
           </div>
         </div>
       </section>

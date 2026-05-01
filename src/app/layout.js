@@ -1,6 +1,9 @@
 import { Inter, Cormorant_Garamond } from "next/font/google";
 import "../styles/globals.css";
 import { BRAND } from "@/config/constants";
+import { CartProvider } from "@/context/CartContext";
+import Navbar from "@/components/layout/Navbar";
+import CartDrawer from "@/components/cart/CartDrawer";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -22,7 +25,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${inter.variable} ${cormorant.variable}`}>
       <body>
-        <main>{children}</main>
+        <CartProvider>
+          <Navbar />
+          <CartDrawer />
+          <main>{children}</main>
+        </CartProvider>
       </body>
     </html>
   );

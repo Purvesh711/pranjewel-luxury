@@ -1,0 +1,152 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition-smooth);
+}
+
+.overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.drawer {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  max-width: 450px;
+  height: 100%;
+  background-color: var(--color-bg);
+  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+  z-index: 1001;
+  display: flex;
+  flex-direction: column;
+  transition: var(--transition-magic);
+}
+
+.drawer.open {
+  right: 0;
+}
+
+.header {
+  padding: var(--space-md);
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header h2 {
+  font-size: 1.5rem;
+}
+
+.closeButton {
+  font-size: 1.5rem;
+  opacity: 0.5;
+  transition: var(--transition-smooth);
+}
+
+.closeButton:hover {
+  opacity: 1;
+}
+
+.content {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-md);
+}
+
+.cartItem {
+  display: flex;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--color-bg-alt);
+}
+
+.itemImage {
+  width: 80px;
+  height: 100px;
+  object-fit: cover;
+  background-color: var(--color-bg-alt);
+}
+
+.itemInfo {
+  flex: 1;
+}
+
+.itemName {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  margin-bottom: 0.2rem;
+}
+
+.itemPrice {
+  color: var(--color-secondary);
+  font-size: 0.9rem;
+}
+
+.removeButton {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+  margin-top: 0.5rem;
+  text-decoration: underline;
+}
+
+.footer {
+  padding: var(--space-md);
+  border-top: 1px solid var(--color-border);
+  background-color: var(--color-bg-alt);
+}
+
+.summaryRow {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.totalRow {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: var(--color-primary);
+}
+
+.checkoutButton {
+  width: 100%;
+  padding: 1.2rem;
+  background-color: var(--color-primary);
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.8rem;
+  transition: var(--transition-smooth);
+}
+
+.checkoutButton:hover {
+  background-color: var(--color-secondary);
+}
+
+.emptyState {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: var(--color-text-muted);
+}

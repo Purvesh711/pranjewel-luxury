@@ -3,9 +3,11 @@
 import { useState } from 'react';
 import styles from './ProductCard.module.css';
 import { formatCurrency } from '@/utils/formatters';
+import { useCart } from '@/context/CartContext';
 
 export default function ProductCard({ product }) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const { addToCart } = useCart();
   
   // Default fallback images if none provided
   const images = product.images || [
@@ -67,7 +69,32 @@ export default function ProductCard({ product }) {
       
       <div className={styles.info}>
         <h3 className={styles.name}>{product.name}</h3>
-        <p className={styles.price}>{formatCurrency(product.price)}</p>
+        <p className={styles.itemPrice}>{formatCurrency(product.price)}</p>
+        
+        <button 
+          onClick={() => addToCart(product)}
+          style={{
+            marginTop: '1rem',
+            padding: '0.5rem 1.5rem',
+            border: '1px solid var(--color-border)',
+            fontSize: '0.65rem',
+            textTransform: 'uppercase',
+            letterSpacing: '0.15em',
+            cursor: 'pointer',
+            transition: 'var(--transition-smooth)'
+          }}
+          onMouseEnter={(e) => e.target.style.backgroundColor = 'var(--color-primary)'}
+          onMouseEnter={(e) => {
+            e.target.style.backgroundColor = 'var(--color-primary)';
+            e.target.style.color = 'white';
+          }}
+          onMouseLeave={(e) => {
+            e.target.style.backgroundColor = 'transparent';
+            e.target.style.color = 'var(--color-text)';
+          }}
+        >
+          Add to Bag
+        </button>
       </div>
     </div>
   );
