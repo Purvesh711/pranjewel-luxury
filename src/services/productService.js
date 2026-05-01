@@ -56,4 +56,46 @@ export const productService = {
     if (error) throw error;
     return data;
   }
+  /**
+   * Create a new product with images
+   */
+  async createProduct(productData, images) {
+    // 1. Insert the product
+    const { data: product, error: pError } = await supabase
+      .from('products')
+      .insert([productData])
+      .select()
+      .single();
+
+    if (pError) throw pError;
+
+    // 2. Insert the images
+    if (images && images.length > 0) {
+      const imageData = images.map((url, index) => ({
+        product_id: product.id,
+        image_url: url,
+        display_order: index + 1
+      }));
+
+      const { error: iError } = await supabase
+        .from('product_images')
+        .insert(imageData);
+
+      if (iError) throw iError;
+    }
+
+    return product;
+  },
+
+  /**
+   * Fetch all categories
+   */
+  async getCategories() {
+    const { data, error } = await supabase
+      .from('categories')
+      .select('*');
+
+    if (error) throw error;
+    return data;
+  }
 };
