@@ -3,6 +3,7 @@
 import { useCart } from '@/context/CartContext';
 import styles from './CartDrawer.module.css';
 import { formatCurrency } from '@/utils/formatters';
+import { useRouter } from 'next/navigation';
 
 export default function CartDrawer() {
   const { 
@@ -14,6 +15,12 @@ export default function CartDrawer() {
     tax, 
     total 
   } = useCart();
+  const router = useRouter();
+
+  const handleCheckout = () => {
+    toggleDrawer();
+    router.push('/checkout');
+  };
 
   return (
     <>
@@ -44,10 +51,18 @@ export default function CartDrawer() {
           ) : (
             cart.map((item) => (
               <div key={item.id} className={styles.cartItem}>
-                <img src={item.images[0]} alt={item.name} className={styles.itemImage} />
+                <img
+                  src={item.images?.[0] || '/placeholder.png'}
+                  alt={item.name}
+                  className={styles.itemImage}
+                  onError={(e) => { e.target.style.opacity = '0.3'; }}
+                />
                 <div className={styles.itemInfo}>
                   <h3 className={styles.itemName}>{item.name}</h3>
                   <p className={styles.itemPrice}>{formatCurrency(item.price)}</p>
+                  <p style={{ fontSize: '0.72rem', color: 'var(--color-text-muted)', margin: '0.2rem 0' }}>
+                    Qty: {item.quantity}
+                  </p>
                   <button 
                     className={styles.removeButton}
                     onClick={() => removeFromCart(item.id)}
@@ -74,7 +89,7 @@ export default function CartDrawer() {
               <span>Total</span>
               <span>{formatCurrency(total)}</span>
             </div>
-            <button className={styles.checkoutButton}>
+            <button className={styles.checkoutButton} onClick={handleCheckout}>
               Proceed to Checkout
             </button>
           </div>

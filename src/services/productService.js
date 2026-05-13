@@ -97,5 +97,24 @@ export const productService = {
 
     if (error) throw error;
     return data;
+  },
+
+  /**
+   * Delete a product and its images
+   */
+  async deleteProduct(productId) {
+    // Delete related images first (foreign key constraint)
+    await supabase
+      .from('product_images')
+      .delete()
+      .eq('product_id', productId);
+
+    // Then delete the product
+    const { error } = await supabase
+      .from('products')
+      .delete()
+      .eq('id', productId);
+
+    if (error) throw error;
   }
 };
